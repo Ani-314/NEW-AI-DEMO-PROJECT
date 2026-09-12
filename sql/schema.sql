@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS push_subscriptions(
   id BIGSERIAL PRIMARY KEY,user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,endpoint TEXT NOT NULL UNIQUE,
   subscription JSONB NOT NULL,created_at TIMESTAMPTZ DEFAULT NOW()
 );
-CREATE INDEX IF NOT EXISTS idx_sessions_kid ON learning_sessions(kid_id,created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_sessions_kid ON learning_sessions(kid_id,login_at DESC);
 CREATE INDEX IF NOT EXISTS idx_activities_kid ON activities(kid_id,created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_quizzes_kid ON quiz_attempts(kid_id,created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_chat_kid ON ai_chat_messages(kid_id,created_at DESC);
